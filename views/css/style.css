@@ -1,0 +1,39 @@
+.embeddedServiceHelpButton .helpButton .uiButton {
+    background-color: var(--chat__button)!important;
+    background: var(--chat__button)!important;
+    font-family: "Arial", sans-serif!important;
+    font-size: 1rem!important;
+    font-weight: 600!important;
+}
+.embeddedServiceHelpButton .uiButton .helpButtonLabel {
+    font-size: 0.875rem!important;
+    font-weight: bold!important;
+    min-width: fit-content!important;
+}
+.embeddedServiceHelpButton .helpButton .uiButton:focus,
+.embeddedServiceHelpButton .helpButton .uiButton:hover {
+    background-color: var(--chat__button)!important;
+}
+.uiButton--default {
+    text-decoration: none!important;
+    text-align: center!important;
+}
+.embeddedServiceSidebarButton .label, .embeddedServiceSidebarButton:disabled .label {
+    text-align: center!important;
+}
+h2[lwc-56vbshdpqil] {
+    color: white!important;
+}
+.embeddedServiceHelpButton .helpButton, .embeddedServiceHelpButton .uiButton, .embeddedServiceSidebarMinimizedDefaultUI {    
+    right: 5rem!important;
+}
+ .embeddedServiceSidebar.layout-docked .dockableContainer {
+    right: 8rem !important;
+ }
+@media (max-width: 768px) {
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        position: fixed!important;
+        left: 50%!important;
+        transform: translateX(-50%)!important;
+    }
+}
