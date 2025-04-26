@@ -1,74 +1,53 @@
-# salesforcechat
-Module multi-store of prestashop for embed the salesforce Chat
+# Salesforce Chat Multistore - PrestaShop Module
 
-# Compatibilidad
+Este módulo permite integrar el **chat de Salesforce** en el footer de cada tienda en un entorno multitienda de PrestaShop. Además, facilita la personalización de las configuraciones específicas por tienda, incluyendo la posibilidad de añadir estilos CSS personalizados desde el backoffice.
 
-PHP >= 7.4
-PRestashop >= 1.7
+## Características
 
-# Modificación de Estilos
+- Integración del chat de **Salesforce Live Agent** por tienda en multitienda.
+- Configuración de:
+  - **Dominio de Salesforce**.
+  - **Secure Domain**.
+  - **Deployment ID** y **Button ID**.
+  - **Organization ID**.
+  - **Embedded Service URL**.
+  - **Campos transcript personalizados** para Tienda e Idioma.
+- Textos predeterminados traducibles desde el sistema de traducciones de PrestaShop.
+- **CSS personalizado configurable** por tienda desde el backoffice.
+- Compatible con **PrestaShop 1.7 y 8.x**.
 
-// El módulo incorpora estilos por defecto y incluye una variable que puede configurar en su fichero principal de css
+## Instalación
 
-Puede modificar el css del embed del chat en el siguiente fichero:
+1. **Sube el módulo**:
+   - Copia la carpeta del módulo en `/modules/salesforcechat/`.
+   
+2. **Instálalo desde el backoffice**:
+   - Ve a **Módulos > Módulos y servicios**.
+   - Busca **Salesforce Chat Multistore** y haz clic en **Instalar**.
 
-**salesforcechat/views/css/style.css**
+3. **Configura las opciones**:
+   - Una vez instalado, accede a la configuración del módulo.
+   - Selecciona cada tienda en el entorno multitienda y completa los datos específicos de Salesforce.
 
-Las variable del boton configurable:
+## Configuración
 
-**(--chat__button)**
+### Por tienda puedes configurar:
 
-# Formulario y mensajes predefinidos
+- **Dominio de Salesforce**.
+- **Secure Domain** para cargar los scripts de Salesforce.
+- **Deployment ID** y **Button ID**.
+- **Organization ID**.
+- **Embedded Service URL**.
+- **Campos transcript** para Tienda e Idioma (nombre del campo en Salesforce).
+- **CSS personalizado** para adaptar el estilo del chat.
 
-El sistema de integración del formulario, tiene por defecto 4 valores, debera modificarlos con los campos configurados en su Sistema integrado en Salesforce o adaptar su sismte integrado a los campos incluidos en el módulo:
+Los textos del chat (como **"Need help?"**, **"Loading"**, **"Contact Us"**) se traducen automáticamente desde el sistema de traducciones de PrestaShop.
 
-**salesforcechat/views/templates/hook/displayFooter.tpl**
+## Estructura del módulo
 
-Campos del formulario:
+salesforcechat/ ├── config/ ├── controllers/ ├── views/ │ ├── css/ │ │ └── custom_style_{id_shop}.css # Archivo CSS generado automáticamente por tienda │ └── templates/ │ └── hook/ │ ├── displayHeader.tpl │ └── displayFooter.tpl ├── salesforcechat.php └── README.md
 
-        embedded_svc.settings.extraPrechatFormDetails = [
-            {
-                "label": "Tienda",
-                "value": "{$sf_chat_shop}",
-                "displayToAgent": true,
-                "transcriptFields": ["Tienda__c"]
-            },
-            {
-                "label": "Idioma",
-                "value": "{$sf_chat_lang}",
-                "displayToAgent": true,
-                "transcriptFields": ["Idioma__c"]
-            }
-        ];
+## Recomendaciones
 
-            embedded_svc.settings.extraPrechatInfo = [{
-                "entityFieldMaps": [{
-                  "doCreate": false,
-                  "doFind": false,
-                  "fieldName": "LastName",
-                  "isExactMatch": true,
-                  "label": "Apellidos"
-                }, {
-                  "doCreate": false,
-                  "doFind": false,
-                  "fieldName": "FirstName",
-                  "isExactMatch": true,
-                  "label": "Nombre"
-                }, {
-                  "doCreate": false,
-                  "doFind": true,
-                  "fieldName": "Email",
-                  "isExactMatch": true,
-                  "label": "Correo electrónico"
-                }, {
-                  "doCreate": false,
-                  "doFind": false,
-                  "fieldName": "Phone",
-                  "isExactMatch": true,
-                  "label": "Teléfono móvil"
-                  }],
-                "entityName": "Contact",
-              }];
-
-
-
+- Asegúrate de tener correctamente configurados los **IDs de Salesforce** para cada tienda.
+- Puedes personalizar el aspecto del botón del chat añadiendo CSS en el campo de **CSS personalizado**.
